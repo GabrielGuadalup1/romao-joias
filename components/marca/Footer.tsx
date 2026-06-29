@@ -1,16 +1,7 @@
 import Link from 'next/link'
 import { Equador } from '@/components/marca/Equador'
-
-// PLACEHOLDER — substituir pela lib buildWhatsAppUrl na Task 1.1
-const WA_URL = 'https://wa.me/5596000000000'
-
-const navLinks = [
-  { href: '/', label: 'Início' },
-  { href: '/historia', label: 'História' },
-  { href: '/colecao', label: 'Coleção' },
-  { href: '/colecao/aliancas', label: 'Alianças' },
-  { href: '/contato', label: 'Contato' },
-]
+import { navLinks } from '@/lib/nav'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 export function Footer() {
   return (
@@ -70,7 +61,7 @@ export function Footer() {
                 [HORÁRIO AQUI]
               </p>
               <a
-                href={WA_URL}
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-sm text-champanhe hover:text-ouro transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-sm inline-block"

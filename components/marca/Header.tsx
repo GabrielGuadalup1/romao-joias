@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { navLinks } from '@/lib/nav'
+import { WHATSAPP_URL } from '@/lib/constants'
 import { Equador } from '@/components/marca/Equador'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,17 +17,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
-
-const navLinks = [
-  { href: '/', label: 'Início' },
-  { href: '/historia', label: 'História' },
-  { href: '/colecao', label: 'Coleção' },
-  { href: '/colecao/aliancas', label: 'Alianças' },
-  { href: '/contato', label: 'Contato' },
-]
-
-// PLACEHOLDER — substituir pela lib buildWhatsAppUrl na Task 1.1
-const WA_URL = 'https://wa.me/5596000000000'
 
 export function Header() {
   const pathname = usePathname()
@@ -57,8 +48,8 @@ export function Header() {
                 className={cn(
                   'font-body text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-sm px-1 pb-px',
                   isActive(href)
-                    ? 'text-ouro border-b border-ouro font-medium'
-                    : 'text-onix hover:text-ouro'
+                    ? 'text-onix font-semibold border-b-2 border-ouro'
+                    : 'text-onix hover:text-onix/70'
                 )}
               >
                 {label}
@@ -68,7 +59,7 @@ export function Header() {
 
           {/* CTA desktop */}
           <a
-            href={WA_URL}
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 bg-ouro text-marfim font-body text-sm font-medium px-4 py-2 rounded-lg hover:bg-ouro/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2 focus-visible:ring-offset-marfim"
@@ -85,7 +76,7 @@ export function Header() {
                     variant="ghost"
                     size="icon"
                     aria-label="Abrir menu"
-                    className="text-onix hover:text-ouro focus-visible:ring-ouro"
+                    className="text-onix hover:text-onix/70 focus-visible:ring-ouro"
                   />
                 }
               >
@@ -119,8 +110,8 @@ export function Header() {
                       className={cn(
                         'font-body text-base py-3 px-3 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro',
                         isActive(href)
-                          ? 'text-ouro font-medium border-l-2 border-ouro bg-ouro/5'
-                          : 'text-onix hover:text-ouro hover:bg-ouro/5'
+                          ? 'text-onix font-semibold border-l-2 border-ouro pl-3 bg-ouro/5'
+                          : 'text-onix hover:text-onix/70 hover:bg-ouro/5'
                       )}
                     >
                       {label}
@@ -131,7 +122,7 @@ export function Header() {
                 <div className="px-5 pb-8 pt-4">
                   <Equador className="mb-5" />
                   <a
-                    href={WA_URL}
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
