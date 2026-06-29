@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-ouro: #A87A2C;
+  --color-champanhe: #D9BE86;
+  --color-onix: #1A1410;
+  --color-marfim: #F4ECDB;
+  --color-pedra: #9A8F7A;
+  --font-display: var(--font-bodoni), serif;
+  --font-body: var(--font-jost), sans-serif;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -122,9 +132,23 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-marfim text-onix font-body antialiased;
   }
-  html {
-    @apply font-sans;
+}
+
+@layer utilities {
+  .equador {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #A87A2C 18%, #A87A2C 82%, transparent);
+  }
+  .tracking-joias { letter-spacing: 0.42em; }
+  .tracking-eyebrow { letter-spacing: 0.28em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
