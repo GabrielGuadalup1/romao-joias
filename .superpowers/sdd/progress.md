@@ -18,3 +18,7 @@ Branch: feat/site-romao-joias
 - Task 0.4: complete (commit 643c0a7, tokens @theme + fonts + equador; build OK)
 - Task 0.5: complete (commit 49d0abd, Equador + Eyebrow; build OK)
   - nota: Geist mantido p/ shadcn --font-sans; --font-bodoni/--font-jost no <html>; lang=pt-BR OK
+- Task 0.6: complete (commits 3fcc95e + fix 892b13c, review clean após fix)
+  - Header (client, usePathname, Sheet mobile), Footer (onix, 3 cols), layout wired.
+  - Compartilhado: lib/nav.ts (navLinks) + lib/constants.ts (WHATSAPP_NUMERO/WHATSAPP_URL).
+  - Sheet (base-nova) usa controlled open/onOpenChange. Ativo = borda ouro + text-onix (AA).
