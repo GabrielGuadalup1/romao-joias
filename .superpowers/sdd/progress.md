@@ -45,3 +45,8 @@ Branch: feat/site-romao-joias
 - Task 2.1 commitada: f0f3ef4. DEPLOY preview Fase 2: https://romao-joias-g8rhd3vp6-gg-uadalup.vercel.app (auth Vercel gabrielguadalup1). Push ainda NÃO feito (local).
 - Task 2.2: complete — tests/historia.spec.ts (6 testes: H1, "1962", linha do tempo (ol li >=4), WhatsApp wa.me, Agendar visita →/contato, axe sem violações graves). 12/12 passam (mobile+desktop).
 - FASE 2 (/historia) APROVADA visualmente pelo cliente (2026-06-30) e testada.
+
+## FASE 3 — /colecao (vitrine Supabase, em andamento)
+- Task 3.1: complete (commit 5caea53) — components/marca/ProductPlaceholder.tsx (aspect-4/5 marfim, monograma R ouro + Equador atrás, rótulo [FOTO AQUI], role=img). tsc limpo.
+- Task 3.2: complete (TDD). dotenv -D; playwright.config.ts carrega .env.local. lib/supabase/server.ts (getSupabaseServer, anon key, persistSession:false) + lib/produtos.ts (getProdutos(cat?) filtra ativo=true, order categoria/ref, erro→[]). tests/produtos.spec.ts: 4/4 passam (ativos + filtro Alianças). Dados: 3 Alianças/3 Joias/3 Relógios ativos. Colunas Produto: ativo/categoria/descricao/id/imagem/nome/preco/ref.
+  - NOTA Windows: Playwright emite ruído "Assertion failed UV_HANDLE_CLOSING" (libuv no teardown) mas testes passam normalmente.

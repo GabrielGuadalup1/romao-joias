@@ -1,4 +1,8 @@
 import { defineConfig, devices } from '@playwright/test'
+import dotenv from 'dotenv'
+
+// Carrega .env.local para os testes que rodam em node (ex.: getProdutos lê o Supabase)
+dotenv.config({ path: '.env.local' })
 
 export default defineConfig({
   testDir: './tests',
