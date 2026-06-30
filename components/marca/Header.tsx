@@ -36,7 +36,7 @@ export function Header() {
             className="flex flex-col leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-sm"
           >
             <span className="font-display text-onix text-xl tracking-tight">ROMÃO</span>
-            <span className="font-body uppercase tracking-joias text-xs text-pedra">JOIAS</span>
+            <span className="font-body uppercase tracking-joias text-xs text-onix/70">JOIAS</span>
           </Link>
 
           {/* Navegação desktop */}
@@ -90,7 +90,7 @@ export function Header() {
                 <SheetHeader className="px-5 pt-5 pb-2">
                   <SheetTitle className="text-left font-normal leading-none">
                     <span className="font-display text-onix text-lg block">ROMÃO</span>
-                    <span className="font-body uppercase tracking-joias text-xs text-pedra block mt-0.5">
+                    <span className="font-body uppercase tracking-joias text-xs text-onix/70 block mt-0.5">
                       JOIAS
                     </span>
                   </SheetTitle>

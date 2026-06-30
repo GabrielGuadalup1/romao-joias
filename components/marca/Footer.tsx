@@ -22,7 +22,7 @@ export function Footer() {
             <p className="font-body text-sm text-pedra leading-relaxed mt-2">
               Tradição de família em ouro.
             </p>
-            <p className="font-body text-xs text-pedra/60 tracking-widest uppercase mt-1">
+            <p className="font-body text-xs text-pedra tracking-widest uppercase mt-1">
               Aliança · Joias · Relógios.
             </p>
           </div>

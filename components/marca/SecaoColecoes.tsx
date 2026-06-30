@@ -95,7 +95,7 @@ export function SecaoColecoes() {
                     {/* Seta discreta de navegação */}
                     <div
                       aria-hidden="true"
-                      className="mt-6 flex items-center gap-2 text-champanhe/50 group-hover:text-champanhe transition-colors duration-200"
+                      className="mt-6 flex items-center gap-2 text-champanhe/80 group-hover:text-champanhe transition-colors duration-200"
                     >
                       <span className="font-body text-xs uppercase tracking-eyebrow">
                         Ver coleção
