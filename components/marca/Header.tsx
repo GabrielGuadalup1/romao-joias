@@ -62,7 +62,7 @@ export function Header() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 bg-ouro text-marfim font-body text-sm font-medium px-4 py-2 rounded-lg hover:bg-ouro/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2 focus-visible:ring-offset-marfim"
+            className="hidden md:inline-flex items-center gap-2 bg-ouro text-onix font-body text-sm font-medium px-4 py-2 rounded-lg hover:bg-ouro/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2 focus-visible:ring-offset-marfim"
           >
             Falar no WhatsApp
           </a>
