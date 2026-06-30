@@ -31,3 +31,8 @@ Branch: feat/site-romao-joias
 - DECISÃO AA (CONFIRMADA pelo cliente 2026-06-30): pedra (#9A8F7A) sobre marfim ≈ 2.7:1 FALHA AA. Regra LOCKED: eyebrow/texto auxiliar em fundo CLARO (marfim) usa text-onix/70; pedra/champanhe só em fundo escuro (onix). Aplicar em TODAS as páginas.
 - DEPLOY Fase 1 OK: https://romao-joias-ihwepgt5s-gg-uadalup.vercel.app (projeto Vercel: gg-uadalup/romao-joias). Auth: gabrielguadalup1. Deploys via `npx vercel deploy --yes`.
 - TODO antes da Fase 3: setar env NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY no projeto Vercel (necessário p/ /colecao ler produtos no build).
+- LOGO (Fase 1, pendência fechada): cliente forneceu public/logo-perfil-claro.png (símbolo s/ marfim) e public/logo-perfil.png (símbolo s/ ônix), 1080² com fundo radial embutido + anel (raio 280) + muito respiro.
+  - scripts/processar-logo.ps1 (System.Drawing): recorta quadrado central 760² + fade radial no alfa (opaco até r300, some em r375) → public/logo-clara.png e public/logo-escura.png (sem box/seam, sem distorção). Favicon: recorte sólido 512² → app/icon.png (favicon.ico default removido). DECISÃO cliente: recortar p/ quadrado justo (vs. máscara CSS / usar como está).
+  - Integração next/image alt "Romão Joias — desde 1962": Header (logo-clara h-11, link home), Hero e Footer (logo-escura). Build OK, rota /icon.png gerada.
+  - NOTA p/ revisão do cliente: medalhão escuro no hero/footer fica com leve brilho (anel ~#1E1711, +claro que ônix) que dissolve — checar se agrada.
+- DEPLOY preview logo: https://romao-joias-hn2clge1i-gg-uadalup.vercel.app (auth Vercel gabrielguadalup1).

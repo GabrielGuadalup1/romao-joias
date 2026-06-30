@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Equador } from '@/components/marca/Equador'
@@ -31,6 +32,15 @@ export default function Home() {
         className="bg-onix text-marfim min-h-[90svh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="max-w-6xl mx-auto w-full">
+
+          <Image
+            src="/logo-escura.png"
+            alt="Romão Joias — desde 1962"
+            width={760}
+            height={760}
+            priority
+            className="h-24 w-24 sm:h-28 sm:w-28 mb-8 -ml-2"
+          />
 
           <Eyebrow className="text-champanhe mb-8">
             Macapá · Amapá · desde 1962

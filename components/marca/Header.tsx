@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
@@ -33,10 +34,21 @@ export function Header() {
           {/* Identidade da marca */}
           <Link
             href="/"
-            className="flex flex-col leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-sm"
+            aria-label="Romão Joias — página inicial"
+            className="flex items-center gap-2.5 leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded-sm"
           >
-            <span className="font-display text-onix text-xl tracking-tight">ROMÃO</span>
-            <span className="font-body uppercase tracking-joias text-xs text-onix/70">JOIAS</span>
+            <Image
+              src="/logo-clara.png"
+              alt="Romão Joias — desde 1962"
+              width={760}
+              height={760}
+              priority
+              className="h-11 w-11 shrink-0"
+            />
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-onix text-xl tracking-tight">ROMÃO</span>
+              <span className="font-body uppercase tracking-joias text-xs text-onix/70">JOIAS</span>
+            </span>
           </Link>
 
           {/* Navegação desktop */}

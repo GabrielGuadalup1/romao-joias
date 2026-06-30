@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Equador } from '@/components/marca/Equador'
 import { navLinks } from '@/lib/nav'
@@ -13,6 +14,13 @@ export function Footer() {
 
           {/* Coluna 1 — Identidade da marca */}
           <div className="flex flex-col gap-3">
+            <Image
+              src="/logo-escura.png"
+              alt="Romão Joias — desde 1962"
+              width={760}
+              height={760}
+              className="h-16 w-16"
+            />
             <div className="leading-none">
               <p className="font-display text-marfim text-2xl tracking-tight">ROMÃO</p>
               <p className="font-body uppercase tracking-joias text-xs text-champanhe mt-1">
