@@ -36,3 +36,9 @@ Branch: feat/site-romao-joias
   - Integração next/image alt "Romão Joias — desde 1962": Header (logo-clara h-11, link home), Hero e Footer (logo-escura). Build OK, rota /icon.png gerada.
   - NOTA p/ revisão do cliente: medalhão escuro no hero/footer fica com leve brilho (anel ~#1E1711, +claro que ônix) que dissolve — checar se agrada.
 - DEPLOY preview logo: https://romao-joias-hn2clge1i-gg-uadalup.vercel.app (auth Vercel gabrielguadalup1).
+- FASE 1 (Home) APROVADA e FECHADA pelo cliente (2026-06-30): logo commitada (6e51e5b), brilho do medalhão escuro aprovado (manter fade como está). Push NÃO feito (fica local por ora).
+
+## FASE 2 — /historia (em andamento)
+- Task 2.1: complete — app/historia/page.tsx. 6 seções alternando claro/escuro: Hero, Origem (1962/Marco Zero), Família/3 gerações, Valores (3 blocos), Linha do tempo (eixo dourado vertical via <ol> + nós), CTA final (WhatsAppButton + Agendar visita). metadata "Nossa história" + OG pt_BR. Eyebrow AA: text-onix/70 em fundo claro, text-champanhe em escuro. Build OK (rota /historia estática), tsc limpo.
+  - NOTA DE PROCESSO: Writes/Edits grandes apareceram corrompidos no PREVIEW do diff do cliente (e Get-Content PS5.1 mostra mojibake por ler UTF-8 como ANSI), mas o DISCO sempre esteve íntegro. Workaround validado: edições pequenas (uma seção por vez) + provar com `(Select-String "return null").Count` e `npx tsc --noEmit` após cada passo. className longos via constantes + cn() (evitar template literals).
+  - PENDENTE Task 2.2: teste Playwright tests/historia.spec.ts (render H1, "1962", timeline, axe).
