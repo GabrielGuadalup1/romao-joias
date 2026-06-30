@@ -22,3 +22,6 @@ Branch: feat/site-romao-joias
   - Header (client, usePathname, Sheet mobile), Footer (onix, 3 cols), layout wired.
   - Compartilhado: lib/nav.ts (navLinks) + lib/constants.ts (WHATSAPP_NUMERO/WHATSAPP_URL).
   - Sheet (base-nova) usa controlled open/onOpenChange. Ativo = borda ouro + text-onix (AA).
+- Task 1.1: complete (commit 1941c69, lib/whatsapp buildWhatsAppUrl, 2 testes passam)
+  - playwright.config.ts criado (webServer build+start, projects mobile 375 / desktop 1440). script npm "test".
+  - buildWhatsAppUrl({nome,ref}) usa WHATSAPP_NUMERO de lib/constants.
