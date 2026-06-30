@@ -42,14 +42,11 @@ export default function Home() {
               id="hero-titulo"
               className="font-display text-marfim text-[clamp(3.5rem,12vw,9rem)] leading-[0.9] tracking-tight"
             >
-              ROMÃO
+              <span>ROMÃO</span>
+              <span className="block font-body uppercase tracking-joias text-champanhe text-sm sm:text-base mt-3 ml-1 leading-normal">
+                JOIAS
+              </span>
             </h1>
-            <p
-              aria-hidden="true"
-              className="font-body uppercase tracking-joias text-champanhe text-sm sm:text-base mt-3 ml-1"
-            >
-              JOIAS
-            </p>
           </div>
 
           {/* Filete equador — assinatura visual */}
@@ -126,7 +123,7 @@ export default function Home() {
       >
         <div className="max-w-2xl mx-auto text-center">
 
-          <Eyebrow className="mb-6">Venha nos conhecer</Eyebrow>
+          <Eyebrow className="text-onix/70 mb-6">Venha nos conhecer</Eyebrow>
 
           <h2
             id="cta-final-titulo"

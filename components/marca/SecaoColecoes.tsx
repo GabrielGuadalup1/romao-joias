@@ -44,7 +44,7 @@ export function SecaoColecoes() {
 
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-          <Eyebrow className="mb-4">Coleções</Eyebrow>
+          <Eyebrow className="text-onix/70 mb-4">Coleções</Eyebrow>
           <h2
             id="colecoes-titulo"
             className="font-display text-onix text-3xl sm:text-4xl lg:text-5xl"
@@ -54,7 +54,7 @@ export function SecaoColecoes() {
         </div>
 
         {/* Grid de cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {colecoes.map((col) => (
             <Link
               key={col.href}

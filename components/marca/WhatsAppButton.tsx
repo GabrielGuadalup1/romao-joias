@@ -18,6 +18,8 @@ interface WhatsAppButtonProps {
   children?: React.ReactNode
   className?: string
   variant?: 'primary' | 'outline'
+  /** Cor do ring-offset para foco visível. Primary padrão: 'onix'; outline padrão: 'marfim'. */
+  ringOffset?: 'onix' | 'marfim'
 }
 
 export function WhatsAppButton({
@@ -26,8 +28,14 @@ export function WhatsAppButton({
   children,
   className,
   variant = 'primary',
+  ringOffset,
 }: WhatsAppButtonProps) {
   const href = buildWhatsAppUrl({ nome, ref: refProduto })
+  const effectiveRingOffset = ringOffset ?? (variant === 'primary' ? 'onix' : 'marfim')
+  const ringOffsetClass =
+    effectiveRingOffset === 'onix'
+      ? 'focus-visible:ring-offset-onix'
+      : 'focus-visible:ring-offset-marfim'
 
   return (
     <a
@@ -41,10 +49,11 @@ export function WhatsAppButton({
         'px-6 py-3.5 rounded-lg',
         'transition-all duration-200',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2',
+        ringOffsetClass,
         // Variantes
         variant === 'primary'
-          ? 'bg-ouro text-onix hover:bg-ouro/85 active:scale-[0.98] focus-visible:ring-offset-onix'
-          : 'border border-champanhe/70 text-marfim hover:bg-champanhe/10 hover:border-champanhe active:scale-[0.98] focus-visible:ring-offset-onix',
+          ? 'bg-ouro text-onix hover:bg-ouro/85 active:scale-[0.98]'
+          : 'border border-champanhe/70 text-marfim hover:bg-champanhe/10 hover:border-champanhe active:scale-[0.98]',
         className,
       )}
     >

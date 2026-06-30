@@ -42,7 +42,7 @@ export function ProvaSocial() {
         {/* Cabeçalho */}
         <div className="text-center mb-16">
           <Eyebrow className="text-champanhe mb-4">
-            Quem escolhe a Romão
+            Quem confia na ROMÃO
           </Eyebrow>
           <h2
             id="prova-social-titulo"
@@ -54,8 +54,8 @@ export function ProvaSocial() {
 
         {/* Depoimentos */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-16">
-          {depoimentos.map((dep, i) => (
-            <figure key={i} className="flex flex-col">
+          {depoimentos.map((dep) => (
+            <figure key={dep.nome} className="flex flex-col">
               {/* [DEPOIMENTO PROVISÓRIO — substituir pelos reais] */}
 
               {/* Aspas decorativas */}
