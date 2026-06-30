@@ -25,3 +25,7 @@ Branch: feat/site-romao-joias
 - Task 1.1: complete (commit 1941c69, lib/whatsapp buildWhatsAppUrl, 2 testes passam)
   - playwright.config.ts criado (webServer build+start, projects mobile 375 / desktop 1440). script npm "test".
   - buildWhatsAppUrl({nome,ref}) usa WHATSAPP_NUMERO de lib/constants.
+- Task 1.2: complete (commit b6f3c35, WhatsAppButton). Props: {nome?, refProduto?, variant 'primary'|'outline', ringOffset?, children?}. NOTA: prop é `refProduto` (não `ref`, reservado no React) → ProductCard (3.3) deve usar refProduto.
+- Task 1.3: complete (commit 5e56b8d + fixes 646e442, review clean). Home: hero/manifesto/SecaoColecoes/ProvaSocial/CTA. metadata+OG pt_BR.
+  - Header CTA contraste corrigido inline (commit pós-1.3): bg-ouro text-onix.
+- DECISÃO AA (pendente confirmar c/ cliente): pedra (#9A8F7A) sobre marfim ≈ 2.7:1 FALHA AA. Regra adotada: eyebrow/texto auxiliar em fundo CLARO usa text-onix/70; pedra só em fundo escuro (onix). Aplicar em TODAS as páginas seguintes.
