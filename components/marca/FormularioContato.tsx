@@ -83,7 +83,7 @@ export function FormularioContato() {
 
       <div>
         <label htmlFor="peca_interesse" className={LABEL}>
-          Peça de interesse <span className="font-normal text-onix/50">(opcional)</span>
+          Peça de interesse <span className="font-normal text-onix/70">(opcional)</span>
         </label>
         <input
           id="peca_interesse"
@@ -96,7 +96,7 @@ export function FormularioContato() {
 
       <div>
         <label htmlFor="mensagem" className={LABEL}>
-          Mensagem <span className="font-normal text-onix/50">(opcional)</span>
+          Mensagem <span className="font-normal text-onix/70">(opcional)</span>
         </label>
         <textarea
           id="mensagem"

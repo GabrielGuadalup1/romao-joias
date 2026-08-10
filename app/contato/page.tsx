@@ -94,7 +94,7 @@ export default function ContatoPage() {
               aria-label="Mapa da localização da loja — imagem a ser inserida"
               className="mt-10 flex aspect-[4/3] w-full items-center justify-center rounded-lg border border-onix/15 bg-onix/[0.04]"
             >
-              <span className="font-body text-xs tracking-[0.2em] text-onix/50 uppercase">
+              <span className="font-body text-xs tracking-[0.2em] text-onix/70 uppercase">
                 [MAPA AQUI]
               </span>
             </div>
