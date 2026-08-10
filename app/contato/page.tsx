@@ -4,6 +4,8 @@ import { Equador } from '@/components/marca/Equador'
 import { Eyebrow } from '@/components/marca/Eyebrow'
 import { WhatsAppButton } from '@/components/marca/WhatsAppButton'
 import { FormularioContato } from '@/components/marca/FormularioContato'
+import { JsonLd } from '@/components/marca/JsonLd'
+import { LOJA } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Contato',
@@ -20,13 +22,14 @@ export const metadata: Metadata = {
 
 const SECTION = 'px-4 sm:px-6 lg:px-8'
 
-// PLACEHOLDERS — trocar pelos dados reais da loja
-const ENDERECO = ['[ENDEREÇO AQUI]', 'Centro — Macapá, AP']
-const HORARIO = ['Segunda a sexta: [HORÁRIO AQUI]', 'Sábado: [HORÁRIO AQUI]', 'Domingo: fechado']
+// Dados da loja (com placeholders) ficam em lib/constants.ts — fonte única com o JSON-LD.
+const ENDERECO = [LOJA.rua, `${LOJA.bairro} — ${LOJA.cidade}, ${LOJA.uf}`]
+const HORARIO = LOJA.horario
 
 export default function ContatoPage() {
   return (
     <>
+      <JsonLd />
       {/* Hero — ônix */}
       <section className={`bg-onix text-marfim py-20 sm:py-28 ${SECTION}`}>
         <div className="mx-auto max-w-3xl text-center">

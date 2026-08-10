@@ -7,6 +7,7 @@ import { Eyebrow } from '@/components/marca/Eyebrow'
 import { WhatsAppButton } from '@/components/marca/WhatsAppButton'
 import { SecaoColecoes } from '@/components/marca/SecaoColecoes'
 import { ProvaSocial } from '@/components/marca/ProvaSocial'
+import { JsonLd } from '@/components/marca/JsonLd'
 
 export const metadata: Metadata = {
   title: 'Joalheria em Macapá desde 1962',
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <JsonLd />
+
       {/* ─────────────────────────────────────────────────────────
           1. HERO "Marco Zero" — bg-onix
       ───────────────────────────────────────────────────────── */}
