@@ -105,3 +105,9 @@ Branch: feat/site-romao-joias
 - `vercel env ls`: NEXT_PUBLIC_SUPABASE_URL/_ANON_KEY seguem setadas em Production+Preview (Sensitive) e Development.
 - LIMITAÇÃO DA VERIFICAÇÃO: Deployment Protection devolve 302 para curl, e os tools MCP `web_fetch_vercel_url`/`get_access_to_vercel_url` falharam ao gerar bypass neste projeto. Não deu para conferir o HTML do preview por fora — conferência visual (inclusive se a vitrine /colecao carrega os 9 produtos) fica com o cliente.
 - PENDENTE: NEXT_PUBLIC_SITE_URL não está setada na Vercel → sitemap.xml e robots.txt do preview apontam para o placeholder https://romaojoias.com.br. Setar quando o domínio real existir.
+
+## FECHAMENTO (2026-08-10)
+- /contato APROVADO visualmente pelo cliente. Site completo (Fases 0–6).
+- PUSH FEITO: branch `feat/site-romao-joias` → origin (github.com/GabrielGuadalup1/romao-joias). Era a primeira vez que o projeto saiu do local desde a Fase 1.
+- FIX pré-entrega (commit b8469c3): Footer tinha `[ENDEREÇO AQUI]`/`[HORÁRIO AQUI]` hard-coded, fora do `LOJA` de lib/constants.ts — o cliente trocaria o placeholder em constants e o rodapé continuaria errado. Agora consome LOJA.rua/bairro/cidade/uf e LOJA.horario[0]. 156/156 seguem passando.
+- Deploy de produção NÃO feito — depende do domínio. Comando: `npx vercel deploy --prod --yes`. ANTES: setar NEXT_PUBLIC_SITE_URL em Production, senão sitemap/robots apontam para o placeholder.
