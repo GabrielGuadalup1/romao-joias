@@ -67,3 +67,33 @@ Branch: feat/site-romao-joias
   - GOTCHA: `vercel env pull` devolve VAZIO para vars marcadas `Type: Sensitive` (write-only) mesmo com valor certo — não confie no pull p/ inferir "vazio". O `vercel env add` marcou as novas como Sensitive automaticamente. Ainda assim ficam disponíveis em build/runtime.
   - FIX: `vercel env rm`+`add` (valor via stdin, sem expor) nas 3 envs + `vercel deploy` (build fresco obrigatório p/ re-inlinar). Verificado no HTML do preview: 9 `<article>` = 9 produtos.
   - DEPLOY preview com fix: https://romao-joias-7s6kvnp36-gg-uadalup.vercel.app/colecao — vitrine com os 9 produtos. Production: env corrigida mas deploy de prod NÃO feito (fica p/ quando promover).
+
+## FASE 5 — /contato (formulário → leads) — COMPLETA
+- BLOQUEADOR RESOLVIDO (2026-08-10): projeto Supabase estava PAUSADO (status INACTIVE, free tier pausa por inatividade desde 03/07) → todo acesso ao DB falhava. Restaurado via MCP `restore_project` → ACTIVE_HEALTHY. **Se o site ficar semanas sem tráfego, isso volta a acontecer.**
+- Task 5.1: complete (commit 7c19ced) — lib/schemas.ts (leadSchema + LeadInput). Honeypot `website: z.string().max(0).optional()` (simplificação do plano: o `.or(z.literal(''))` era redundante). 3/3 testes.
+- Task 5.2: complete (commit a329d3f) — app/actions/criar-lead.ts. DESVIO DO PLANO: honeypot checado ANTES do parse (no plano era depois, onde seria código morto — o schema já rejeita `website` preenchido). Bot recebe sucesso falso e nada é gravado.
+- Task 5.3: complete (commit 35b21b9) — components/marca/FormularioContato.tsx. useActionState + `pending`. DECISÃO: inputs nativos estilizados com tokens da marca (não shadcn Input) — mesma razão do ProductCard: os primitivos base-nova usam a paleta shadcn (border-input/ring-ring), que destoa do marfim. Erros por campo com aria-describedby + aria-invalid; sucesso substitui o form (role=status).
+- Task 5.4: complete (commit 3d03707) — app/contato/page.tsx. Hero ônix + Equador + 2 colunas (dados da loja / formulário). Rota ○ estática.
+- Task 5.5: complete (commit 09a8416) — tests/contato.spec.ts. 2 correções vindas dos testes: (a) `text-onix/50` sobre marfim = 3.32:1, FALHA AA → trocado por `text-onix/70` (regra AA LOCKED do projeto); (b) `getByText('Endereço')` batia em 3 elementos → `{ exact: true }`.
+  - GOTCHA honeypot em teste: `fill()` não alcança input `display:none`. Usar `locator.evaluate(el => el.value = ...)` — funciona porque o form é nativo (action=), não controlado.
+- Task 5.6: **BLOQUEADO** — `npx vercel deploy` retorna "Not authorized" (token do CLI expirou; `vercel whoami` trava esperando login interativo). Precisa de `npx vercel login` rodado pelo usuário. MCP da Vercel está autenticado, mas `deploy_to_vercel` sobe árvore de arquivos e criaria projeto novo — não serve para redeployar `gg-uadalup/romao-joias`.
+
+## AUDITORIA DE SEGURANÇA (2026-08-10, a pedido do cliente)
+1. **RLS**: ligado nas 2 tabelas (`leads`, `produtos`), 1 policy cada. `leads` só permite INSERT (anon+authenticated, with_check true) — ninguém lê leads pela anon key. `produtos` só SELECT com `ativo = true`.
+2. **Secrets**: `gitleaks git .` → 39 commits, 0 vazamentos. `gitleaks dir .` acusa 7, todos em caminhos gitignored (.env.local + artefatos .next/), incluindo 2 falsos positivos (SHA de commit do next.js lido como sourcegraph-token). Nenhuma referência a service_role key no código (só um comentário no supabase-schema.sql). O bundle client NÃO contém a key do Supabase — o acesso é só server-side.
+   - gitleaks 8.30 mudou a CLI: `detect --source .` não existe mais. Usar `gitleaks git .` (histórico) e `gitleaks dir .` (working tree).
+3. **Formulário**: validação zod roda no servidor (Server Action) — o client não valida nada sozinho; honeypot ativo; ZERO console.log/logger em criar-lead.ts, supabase/server.ts, schemas.ts e FormularioContato.tsx → nenhuma PII em log.
+4. **Rate limit**: lib/rate-limit.ts — janela deslizante em memória, 5 envios/IP/hora, IP de `x-forwarded-for` (1º item) com fallback `x-real-ip`. Aplicado DEPOIS da validação zod (formulário incompleto não gasta cota) e DEPOIS do honeypot. Teto de 5.000 chaves no Map.
+   - **LIMITAÇÃO A COMUNICAR**: estado por instância. Em Fluid Compute cada instância tem seu Map → o limite real é por instância, não global. Segura spam casual, não ataque distribuído. Trocar por Upstash/Vercel KV mantendo a assinatura de `checarRateLimit` se precisar de garantia forte.
+   - Efeito colateral nos testes: 4 viewports × envio válido esgotavam a cota. Resolvido dando `x-forwarded-for` único por teste (beforeEach em contato.spec.ts).
+
+## FASE 6 — Polish
+- Task 6.1: complete (commit d15dab2) — app/sitemap.ts + app/robots.ts. `SITE_URL` em lib/constants.ts (PLACEHOLDER: https://romaojoias.com.br, sobrescrevível por NEXT_PUBLIC_SITE_URL). Rotas ○ /robots.txt e ○ /sitemap.xml no build; verificadas por curl.
+- Task 6.2: complete (commit 4b83b91) — components/marca/JsonLd.tsx (@type JewelryStore) na Home e /contato. Dados da loja centralizados em `LOJA` (lib/constants.ts) — fonte única do JSON-LD e da página /contato, para o cliente trocar placeholder em UM lugar. `horario` (exibição) e `horarioSchema` (schema.org) precisam ser trocados JUNTOS.
+- Task 6.3: complete (commit 8b81e2d) — playwright.config com 4 projetos: mobile 375 / tablet 768 / desktop 1440 / wide 2560. **Suíte completa: 156/156.** prefers-reduced-motion já coberto em globals.css (linhas 148-154). Contraste AA revisado.
+  - Limpeza: 37 leads "TESTE %" removidos do Supabase; 3 leads-semente (Marina/Renan/Beatriz, 29/06) preservados.
+- Task 6.4: **BLOQUEADO pelo mesmo motivo da 5.6** (auth do Vercel CLI).
+
+## FLAKINESS CONHECIDA (Windows)
+- O build às vezes falha em `next/font/google` com 404 em woff2 do Jost (fonts.gstatic.com). Não é o código: `rm -rf .next && npm run build` resolve. Se reaparecer no CI/Vercel, considerar self-hostar as fontes.
+- `next start` sobrevive ao TaskStop; liberar a porta com Stop-Process antes de reiniciar.
