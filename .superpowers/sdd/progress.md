@@ -97,3 +97,11 @@ Branch: feat/site-romao-joias
 ## FLAKINESS CONHECIDA (Windows)
 - O build às vezes falha em `next/font/google` com 404 em woff2 do Jost (fonts.gstatic.com). Não é o código: `rm -rf .next && npm run build` resolve. Se reaparecer no CI/Vercel, considerar self-hostar as fontes.
 - `next start` sobrevive ao TaskStop; liberar a porta com Stop-Process antes de reiniciar.
+
+## DEPLOY Fase 5+6 (2026-08-10)
+- Bloqueador do CLI resolvido: cliente rodou `npx vercel login` (device flow). CLI 58.9.1.
+- DEPLOY preview: https://romao-joias-eltih6co9-gg-uadalup.vercel.app (auth Vercel gabrielguadalup1)
+- Verificado nos logs de build da Vercel: "Compiled successfully", rota ○ /contato prerenderizada, zero erros/warnings.
+- `vercel env ls`: NEXT_PUBLIC_SUPABASE_URL/_ANON_KEY seguem setadas em Production+Preview (Sensitive) e Development.
+- LIMITAÇÃO DA VERIFICAÇÃO: Deployment Protection devolve 302 para curl, e os tools MCP `web_fetch_vercel_url`/`get_access_to_vercel_url` falharam ao gerar bypass neste projeto. Não deu para conferir o HTML do preview por fora — conferência visual (inclusive se a vitrine /colecao carrega os 9 produtos) fica com o cliente.
+- PENDENTE: NEXT_PUBLIC_SITE_URL não está setada na Vercel → sitemap.xml e robots.txt do preview apontam para o placeholder https://romaojoias.com.br. Setar quando o domínio real existir.
