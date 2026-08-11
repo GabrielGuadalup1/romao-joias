@@ -22,6 +22,8 @@ export default defineConfig({
   },
   projects: [
     { name: 'mobile', use: { ...devices['Pixel 7'], viewport: { width: 375, height: 800 } } },
+    { name: 'tablet', use: { viewport: { width: 768, height: 1024 } } },
     { name: 'desktop', use: { viewport: { width: 1440, height: 900 } } },
+    { name: 'wide', use: { viewport: { width: 2560, height: 1440 } } },
   ],
 })
