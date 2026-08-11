@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Equador } from '@/components/marca/Equador'
 import { navLinks } from '@/lib/nav'
-import { WHATSAPP_URL } from '@/lib/constants'
+import { LOJA, WHATSAPP_URL } from '@/lib/constants'
 
 export function Footer() {
   return (
@@ -60,14 +60,13 @@ export function Footer() {
               Contato
             </p>
             <address className="not-italic flex flex-col gap-3">
+              {/* Dados (com placeholders) vêm de LOJA em lib/constants.ts — fonte única. */}
               <p className="font-body text-sm text-marfim/75 leading-relaxed">
-                {/* PLACEHOLDER — substituir pelo endereço real */}
-                [ENDEREÇO AQUI]
+                {LOJA.rua}
+                <br />
+                {LOJA.bairro} — {LOJA.cidade}, {LOJA.uf}
               </p>
-              <p className="font-body text-sm text-marfim/75">
-                {/* PLACEHOLDER — substituir pelo horário de funcionamento */}
-                [HORÁRIO AQUI]
-              </p>
+              <p className="font-body text-sm text-marfim/75">{LOJA.horario[0]}</p>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
